@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const RecomendController = require("../controllers/foodRecomend.controller");
-const recomendController = new RecomendController();
+const FoodRecomendController = require("../controllers/foodRecomend.controller");
+const foodrecomendController = new FoodRecomendController();
 
-module.exports = RecomendController;
+router.get("/find/categories", foodrecomendController.findCategory);
+router.get("/find/foods", foodrecomendController.findFood);
+
+module.exports = router;

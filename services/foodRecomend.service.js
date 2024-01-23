@@ -5,10 +5,12 @@ class FoodRecomendService {
     this.foodRecomendRepository = new FoodRecomendRepository();
   }
 
-  foodRecomendRouter = async () => {
-    findFoods = await this.foodRecomendRepository.foodRecomendRouter();
+  findCategory = async () => {
+    await this.foodRecomendRepository.allCategories();
+  };
 
-    return findFoods;
+  findFood = async () => {
+    await this.foodRecomendRepository.allFoods();
   };
 }
 

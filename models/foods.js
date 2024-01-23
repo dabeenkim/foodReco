@@ -12,15 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(models.FoodImgs, {
         sourceKey: "foodId",
         foreignKey: "foodId",
-      }),
-        this.hasMany(models.Users, {
-          sourceKey: "userEmail",
-          foreignKey: "userEmail",
-        }),
-        this.hasMany(models.Categories, {
-          sourceKey: "categoryId",
-          foreignKey: "categoryId",
-        });
+      });
     }
   }
   Foods.init(
@@ -28,31 +20,34 @@ module.exports = (sequelize, DataTypes) => {
       foodId: {
         allowNull: false,
         primaryKey: true,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
       },
-      categoryId: {
+      country: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      userEmail: {
+      foodName: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      category: {
+      kind: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      name: {
+      detail: {
         allowNull: false,
         type: DataTypes.STRING,
       },
       createdAt: {
         allowNull: true,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
       updatedAt: {
         allowNull: true,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

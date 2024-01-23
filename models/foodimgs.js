@@ -9,18 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.Foods, {
+      this.belongsTo(models.Foods, {
         sourceKey: "foodId",
         foreignKey: "foodId",
-      }),
-        this.hasMany(models.Categories, {
-          sourceKey: "categoryId",
-          foreignKey: "categoryId",
-        }),
-        this.hasMany(models.Users, {
-          sourceKey: "userEmail",
-          foreignKey: "userEmail",
-        });
+      });
     }
   }
   FoodImgs.init(
@@ -28,23 +20,21 @@ module.exports = (sequelize, DataTypes) => {
       imgId: {
         allowNull: false,
         primaryKey: true,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
       },
       foodId: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
-      categoryId: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      userEmail: {
+      detail: {
         allowNull: false,
         type: DataTypes.STRING,
       },
       imgOrder: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
+        defaultValue: 1,
       },
       imgUrl: {
         allowNull: false,
@@ -53,10 +43,12 @@ module.exports = (sequelize, DataTypes) => {
       createdAt: {
         allowNull: true,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
       updatedAt: {
         allowNull: true,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

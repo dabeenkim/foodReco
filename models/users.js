@@ -9,38 +9,32 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasOne(models.Categories, {
-        sourceKey: "userEmail",
-        foreignKey: "userEmail",
-      }),
-        this.hasOne(models.Foods, {
-          sourceKey: "userEmail",
-          foreignKey: "userEmail",
-        }),
-        this.hasOne(models.FoodImgs, {
-          sourceKey: "userEmail",
-          foreignKey: "userEmail",
-        });
     }
   }
   Users.init(
     {
-      userEmail: {
+      email: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.STRING,
       },
       password: {
-        allowNull: true,
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      nickname: {
+        allowNull: false,
         type: DataTypes.STRING,
       },
       createdAt: {
         allowNull: true,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
       updatedAt: {
         allowNull: true,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
     {
