@@ -1,9 +1,17 @@
-const Categories = require("../models");
+const { Sequelize, DataTypes } = require("sequelize");
+const { Foods, FoodImgs } = require("../models");
 
 class FoodRecomendRepository {
-  allCategories = async () => {
-    const allCategories = await Categories.findAll({});
-    return allCategories;
+  findCountry = async () => {
+    const allCountry = await Foods.sequelize.query(
+      `
+      SELECT MIN(country) AS country
+      FROM Foods
+      GROUP BY country
+      `,
+      { type: Sequelize.QueryTypes.SELECT }
+    );
+    return allCountry;
   };
 }
 

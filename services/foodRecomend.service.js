@@ -5,12 +5,16 @@ class FoodRecomendService {
     this.foodRecomendRepository = new FoodRecomendRepository();
   }
 
-  findCategory = async () => {
-    await this.foodRecomendRepository.allCategories();
+  findCountry = async () => {
+    const Countries = await this.foodRecomendRepository.findCountry();
+    //괄호제거
+    // const uniqueCountries = Countries.map((item) => item.country);
+    return Countries;
   };
 
   findFood = async () => {
-    await this.foodRecomendRepository.allFoods();
+    const Foods = await this.foodRecomendRepository.allFoods();
+    return Foods;
   };
 }
 

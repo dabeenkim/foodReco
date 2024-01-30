@@ -8,9 +8,9 @@ class FoodRecomendController {
   /**
    * 카테고리 조회
    */
-  findCategory = async (req, res, next) => {
-    const Categories = await this.foodRecomendService.findCategory();
-    res.status(200).json({ category: Categories });
+  findCountry = async (req, res, next) => {
+    const country = await this.foodRecomendService.findCountry();
+    res.status(200).json({ country });
   };
 
   /**
@@ -18,7 +18,7 @@ class FoodRecomendController {
    */
   findFood = async (req, res, next) => {
     const foods = await this.foodRecomendService.findFood();
-    res.status(200).json({ food: foods });
+    res.status(200).json({ foods });
   };
 
   addFood = async (req, res, next) => {
