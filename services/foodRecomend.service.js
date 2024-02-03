@@ -6,15 +6,25 @@ class FoodRecomendService {
   }
 
   findCountry = async () => {
-    const Countries = await this.foodRecomendRepository.findCountry();
+    const countries = await this.foodRecomendRepository.findCountry();
     //괄호제거
     // const uniqueCountries = Countries.map((item) => item.country);
-    return Countries;
+    return countries;
   };
 
   findFood = async () => {
-    const Foods = await this.foodRecomendRepository.allFoods();
-    return Foods;
+    const foods = await this.foodRecomendRepository.findFood();
+    return foods;
+  };
+
+  findKind = async () => {
+    const kinds = await this.foodRecomendRepository.findKind();
+    return kinds;
+  };
+
+  findDetail = async () => {
+    const detail = await this.foodRecomendRepository.findDetail();
+    return detail;
   };
 }
 
